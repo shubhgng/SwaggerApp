@@ -1,5 +1,6 @@
 package com.example.Swagger;
 
+import com.google.common.base.Predicates;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,7 @@ public class SwaggerApplication {
 				.select()
 				.apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any())
+				.paths(Predicates.not(PathSelectors.regex("/error.*")))
 				.build();
 	}
 
